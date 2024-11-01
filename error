@@ -1,0 +1,63 @@
+Processing 1716/5383: 0db1f7ee-686d-44df-9e0e-7096f8f39fa6
+Processing 1717/5383: 3ec7532f-a2d4-4c91-8416-ac19c05f5e83
+Processing 1718/5383: 0c18ca0a-0c10-4baa-aa42-04a89ddb3db1
+Processing 1719/5383: 7fdb579f-cb28-458a-80d3-3a558a267930
+Processing 1720/5383: 79519071-28bb-4680-ae67-e316db087532
+Processing 1721/5383: 1c3bc9a8-6b5a-470f-be81-eb54a2acb9b1
+Processing 1722/5383: 950bcff7-b6a6-4167-9c16-0a8e64116fa0
+Processing 1723/5383: a35d5e99-926f-4a90-8b2d-d8debbfa9dac
+Traceback (most recent call last):
+  File "/home/saad/.local/lib/python3.10/site-packages/urllib3/connection.py", line 199, in _new_conn
+    sock = connection.create_connection(
+  File "/home/saad/.local/lib/python3.10/site-packages/urllib3/util/connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "/usr/lib/python3.10/socket.py", line 955, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno -3] Temporary failure in name resolution
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/saad/.local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 789, in urlopen
+    response = self._make_request(
+  File "/home/saad/.local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 490, in _make_request
+    raise new_e
+  File "/home/saad/.local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 466, in _make_request
+    self._validate_conn(conn)
+  File "/home/saad/.local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 1095, in _validate_conn
+    conn.connect()
+  File "/home/saad/.local/lib/python3.10/site-packages/urllib3/connection.py", line 693, in connect
+    self.sock = sock = self._new_conn()
+  File "/home/saad/.local/lib/python3.10/site-packages/urllib3/connection.py", line 206, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x7fd5397a1510>: Failed to resolve 'api.blinkpharmacie.ma' ([Errno -3] Temporary failure in name resolution)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/saad/.local/lib/python3.10/site-packages/requests/adapters.py", line 667, in send
+    resp = conn.urlopen(
+  File "/home/saad/.local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 843, in urlopen
+    retries = retries.increment(
+  File "/home/saad/.local/lib/python3.10/site-packages/urllib3/util/retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.blinkpharmacie.ma', port=443): Max retries exceeded with url: /api/v3/product_synthesis/a35d5e99-926f-4a90-8b2d-d8debbfa9dac (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7fd5397a1510>: Failed to resolve 'api.blinkpharmacie.ma' ([Errno -3] Temporary failure in name resolution)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/mnt/c/Users/haha/Desktop/aben-dhi/script.py", line 74, in <module>
+    result = fetch_product_data(product_id)
+  File "/mnt/c/Users/haha/Desktop/aben-dhi/script.py", line 21, in fetch_product_data
+    response = requests.get(api_url)
+  File "/home/saad/.local/lib/python3.10/site-packages/requests/api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+  File "/home/saad/.local/lib/python3.10/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/home/saad/.local/lib/python3.10/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/saad/.local/lib/python3.10/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/saad/.local/lib/python3.10/site-packages/requests/adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.blinkpharmacie.ma', port=443): Max retries exceeded with url: /api/v3/product_synthesis/a35d5e99-926f-4a90-8b2d-d8debbfa9dac (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7fd5397a1510>: Failed to resolve 'api.blinkpharmacie.ma' ([Errno -3] Temporary failure in name resolution)"))
